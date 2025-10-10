@@ -1,3 +1,3 @@
 # Molbridge
 
-Model checkpoints will be available.
+Model checkpoints will be available soon.
