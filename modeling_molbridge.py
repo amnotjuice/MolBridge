@@ -94,7 +94,7 @@ class MolBridge(nn.Module):
         return loss, logits_per_text, logits_per_smiles, cont_loss, class_loss
 
         
-class MoltrieverForEmbed(nn.Module):
+class MolBridgeForEmbed(nn.Module):
     def __init__(self, 
                  smiles_model_path='ibm-research/MoLFormer-XL-both-10pct', 
                  language_model_path='allenai/scibert_scivocab_uncased', 
