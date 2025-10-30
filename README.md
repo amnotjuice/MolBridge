@@ -12,6 +12,7 @@ We release two complementary checkpoints for bidirectional generation between mo
 
 | Model | Description | Link |
 |:------|:-------------|:------|
+| **MolBridge-Gen-Base-C2S** | Pre-traind with local alignment pairs | [PhTae/MolBridge-Gen-Base](https://huggingface.co/PhTae/MolBridge-Gen-Base) |
 | **MolBridge-Gen-Base-C2S** | Caption → SMILES generation | [PhTae/MolBridge-Gen-Base-C2S](https://huggingface.co/PhTae/MolBridge-Gen-Base-C2S) |
 | **MolBridge-Gen-Base-S2C** | SMILES → Caption generation | [PhTae/MolBridge-Gen-Base-S2C](https://huggingface.co/PhTae/MolBridge-Gen-Base-S2C) |
 
