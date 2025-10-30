@@ -4,7 +4,7 @@
 *EMNLP 2025 Main Conference*
 
 MolBridge is a substructure-aware generative model designed to align molecular structures and textual descriptions.  
-We release two complementary checkpoints for bidirectional generation between molecule representations and natural language captions.
+We release checkpoints for bidirectional generation between molecule representations and natural language captions.
 
 ---
 
