@@ -96,7 +96,7 @@ model = MoltrieverForEmbed().to(device)
 smiles_tk = AutoTokenizer.from_pretrained(model.smiles_model_path, trust_remote_code=True)
 lang_tk = AutoTokenizer.from_pretrained(model.language_model_path)
 
-model.load_state_dict(torch.load('/data/user16/molbridge/output_moltriever_refine/2025-05-15-16-20-17_200_2/50_model'), strict=False)
+model.load_state_dict(torch.load('MolBridge.pt'), strict=False)
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters())
 
