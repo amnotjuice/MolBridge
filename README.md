@@ -1,6 +1,7 @@
 # MolBridge
 
 [**Bridging the Gap Between Molecule and Textual Descriptions via Substructure-aware Alignment**](https://arxiv.org/abs/2510.26157)
+
 *EMNLP 2025 Main Conference*
 
 MolBridge is a substructure-aware generative model designed to align molecular structures and textual descriptions.  
