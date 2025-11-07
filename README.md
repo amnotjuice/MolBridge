@@ -14,7 +14,7 @@ We release checkpoints for bidirectional generation between molecule representat
 | Model | Description | Link |
 |:------|:-------------|:------| 
 | **MolBridge** | SMIELS + Text encoders | [Google Drive](https://drive.google.com/file/d/1bj_7quy27RMLAyRp6nQT1T_XEyj9hUBg/view?usp=sharing) |
-| **MolBridge-Gen-Base-C2S** | Pre-traind with local alignment pairs | [PhTae/MolBridge-Gen-Base](https://huggingface.co/PhTae/MolBridge-Gen-Base) |
+| **MolBridge-Gen-Base** | Pre-traind with local alignment pairs | [PhTae/MolBridge-Gen-Base](https://huggingface.co/PhTae/MolBridge-Gen-Base) |
 | **MolBridge-Gen-Base-C2S** | Caption → SMILES generation | [PhTae/MolBridge-Gen-Base-C2S](https://huggingface.co/PhTae/MolBridge-Gen-Base-C2S) |
 | **MolBridge-Gen-Base-S2C** | SMILES → Caption generation | [PhTae/MolBridge-Gen-Base-S2C](https://huggingface.co/PhTae/MolBridge-Gen-Base-S2C) |
 
