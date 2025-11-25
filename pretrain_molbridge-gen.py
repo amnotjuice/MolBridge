@@ -70,7 +70,7 @@ def canonicalize_smiles(smiles, canonical=True, isomericSmiles=True):
     mol = Chem.MolFromSmiles(smiles)
     if mol:
         return Chem.MolToSmiles(mol, canonical=canonical)#, isomericSmiles=isomericSmiles)
-    return smiles  # 유효하지 않은 SMILES 처리
+    return smiles
 
 class ChEBI_20_data_Dataset(Dataset):
     def __init__(
