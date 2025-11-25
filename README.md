@@ -20,6 +20,14 @@ We release checkpoints for bidirectional generation between molecule representat
 
 ---
 
+## 📦 Released Datasets
+
+All datasets for **MolBridge** and **MolBridge-Gen** can be found here: [Google Drive](https://drive.google.com/drive/folders/1LyCcLu4rAOhdRCRntN3zZ3wt_OqHjMze?usp=sharing).
+
+For the **CHEBI-20** dataset, please refer to the original **MolT5** repository and documentation.
+
+---
+
 ## 🧪 Usage Examples
 
 ### Caption → SMILES (C2S)
