@@ -19,7 +19,7 @@ parser.add_argument("--batch_size", type=int, default=32)
 parser.add_argument("--num_workers", type=int, default=8)
 
 # parser.add_argument('--save_path', type=str, default='./output_mine/')
-parser.add_argument('--checkpoint', type=str, default="/home/user16/HT/MolReGPT4TKDE/MolT5/outputs_truepair/smiles2caption_base/2025-04-25-15-03-26_8_16/best_model")
+parser.add_argument('--checkpoint', type=str, default="./outputs_truepair/smiles2caption_base/2025-04-25-15-03-26_8_16/best_model")
 parser.add_argument('--data_dir', type=str, default='.')
 parser.add_argument('--direction', type=str, default='smiles2caption', choices=['smiles2caption', 'caption2smiles'])
 parser.add_argument('--dataset', type=str, default='ChEBI-20_data', choices=["pubchemstm", "ChEBI-20_data"])
@@ -54,7 +54,7 @@ def canonicalize_smiles(smiles, canonical=True, isomericSmiles=True):
     mol = Chem.MolFromSmiles(smiles)
     if mol:
         return Chem.MolToSmiles(mol, canonical=canonical)#, isomericSmiles=isomericSmiles)
-    return smiles  # 유효하지 않은 SMILES 처리
+    return smiles 
 
 class ChEBI_20_data_Dataset(Dataset):
     def __init__(
