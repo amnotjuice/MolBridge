@@ -1,0 +1,86 @@
+# submit_train_curriculum.sub
+# Combined + Molecular Similarity Soft Labels (配置2 - 预期最大提升)
+
+# 指定可执行程序
+executable = run_train_curriculum.sh
+
+# 日志配置
+log    = logs/job_$(Cluster)_$(Process).log
+output = sensitivity_analysis/logs/job_$(Cluster)_$(Process).out
+error  = logs/job_$(Cluster)_$(Process).err
+
+# -------------------------------------------------------------------------
+# 资源请求
+# -------------------------------------------------------------------------
+
++WantGPULab = true
++GPUJobLength = "long"
+
+request_cpus   = 4
+request_memory = 48GB
+request_disk   = 50GB
+request_gpus   = 1
+# Request Ampere (A100/A40) or better for faster training (Capability >= 8.0)
+require_gpus   = (Capability >= 8.0) && (GlobalMemoryMb >= 80000)
+
+# -------------------------------------------------------------------------
+# 文件传输与Checkpointing配置
+# -------------------------------------------------------------------------
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT_OR_EVICT
+
+# 输入文件
+transfer_input_files = train_RISEN.py, \
+                       modeling_RISEN.py, \
+                       molbridge_env.tar.gz, \
+                       filtered_cont_trainset_cem22.json, \
+                       filtered_positive_set_cem22_augmented.json
+
+# 输出文件 - 在eviction和正常退出时都传输
+transfer_output_files = output_MolBridge_combined
+
+# Exit-Driven Checkpointing配置
+checkpoint_exit_code = 85
+transfer_checkpoint_files = output_MolBridge_combined
++is_resumable = true
+
+# -------------------------------------------------------------------------
+# 作业配置
+# -------------------------------------------------------------------------
+
+# wandb API key for real-time monitoring
+environment = "WANDB_API_KEY=85fd50475db418ce01fc09875b16bbb2553a1087"
+
+# =========================================================================
+# Combined + MoLFormer Embedding Similarity Soft Labels (配置2)
+# =========================================================================
+# 
+# Combined 参数 (来自验证有效的配置):
+#   --mirror_alpha 0.1: Prototype 融合权重
+#   --proto_lambda 0.1: Mirror Loss 权重
+#
+# MoLFormer 嵌入软标签参数 (核心创新):
+#   --similarity_threshold 0.3: MoLFormer 相似度阈值
+#
+# 软标签参数:
+#   --use_soft_labels: 启用软标签
+#   --soft_label_alpha 0.1: 10% 软标签，90% 硬标签
+#   --soft_label_temperature 0.5: 较低温度使软标签更尖锐
+#
+arguments = --batch_size 200 \
+            --accum_steps 2 \
+            --learning_rate 2e-5 \
+            --num_workers 8 \
+            --save_path ./output_MolBridge_combined/ \
+            --run_name Combined_Soft_Attention_k10 \
+            --mirror_alpha 0.1 \
+            --proto_lambda 0.1 \
+            --similarity_threshold 0.7 \
+            --use_soft_labels \
+            --soft_label_alpha 0.1 \
+            --soft_label_temperature 0.2 \
+            --dataset pubchem324k \
+            --eval_step 1000 \
+            --max_epochs 50
+
+queue
